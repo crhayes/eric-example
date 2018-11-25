@@ -1,19 +1,17 @@
-var App = (function() {
-  function App() {}
-
-  App.prototype.init = async function() {
+class App {
+  async init() {
     const tracks = await this.fetchTracks('rock');
 
     this.render(tracks);
   }
 
-  App.prototype.onGenreChange = async function(event) {
+  async onGenreChange(event) {
     const tracks = await this.fetchTracks(event.value);
 
     this.render(tracks);
   }
 
-  App.prototype.fetchTracks = async function(genreSlug) {
+  async fetchTracks(genreSlug) {
     const genreSlugToIdMap = {
       'rock': 7,
       'pop': 8,
@@ -40,11 +38,12 @@ var App = (function() {
     return res.message.body.track_list.map(item => {
       return {
         name: item.track.album_name,
+        genres: item.track.primary_genres,
       }
     });
   }
 
-  App.prototype.render = function(tracks) {
+  render(tracks) {
     const $trackListContainer = $('.track-list');
 
     $trackListContainer.empty();
@@ -55,9 +54,7 @@ var App = (function() {
       `);
     })
   }
-
-  return App;
-}());
+}
 
 var app = new App();
 

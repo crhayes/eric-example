@@ -28,7 +28,7 @@ var App = (function() {
       method: 'GET',
       dataType: 'jsonp',
       data: {
-        apikey: '3ab5684680f38c7ad48e5a3d9078a81c',
+        apikey: '688ba9d21160725fda946f96ac6db6fe',
         format: 'jsonp',
         f_music_genre_id: genreId,
         page_size: '5',
