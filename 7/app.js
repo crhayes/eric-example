@@ -45,14 +45,9 @@ class App {
 
   render(tracks) {
     const $trackListContainer = $('.track-list');
+    const templateStrings = tracks.map(track => `<div class="list-group-item">${track.name}</div>`);
 
-    $trackListContainer.empty();
-
-    tracks.forEach(track => {
-      $trackListContainer.append(`
-        <div class="list-group-item">${track.name}</div>
-      `);
-    })
+    $trackListContainer.html(templateStrings.join(''));
   }
 }
 
